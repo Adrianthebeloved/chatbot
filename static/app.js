@@ -13,12 +13,12 @@ class Chatbox {
         const {openButton, chatBox, sendButton} = this.args;
 
         openButton.addEventListener('click',() => this.toggleState(chatBox))
-        sendButton.addEventListener('click', () => this.sendButton(chatBox))
+        sendButton.addEventListener('click', () => this.onSendButton(chatBox))
 
         const node = chatBox.querySelector('input');
         node.addEventListener('keyup', ({key}) => {
             if (key === 'Enter') {
-                this.sendButton(chatBox)
+                this.onSendButton(chatBox)
             }
         })
     }
@@ -28,9 +28,9 @@ class Chatbox {
 
         // show or hides the box
         if(this.state) {
-            Chatbox.classList.add('chatbox--active')
+            chatBox.classList.add('chatbox--active')
         } else{
-            Chatbox.classList.remove('chatbox--active')
+            chatBox.classList.remove('chatbox--active')
         }
     }
 
@@ -86,4 +86,4 @@ class Chatbox {
 }
 
 const chatbox = new Chatbox();
-chatbox.display()
+chatbox.display();
